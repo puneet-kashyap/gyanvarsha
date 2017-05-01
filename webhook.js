@@ -23,8 +23,9 @@ server.post('/', (req, res, next) => {
 
     if (status === 200 && result.action === 'courseLevel'){
         res.json({
+            speech: 'Hello world from webhook',
             displayText: 'Hello world from webhook',
-            source: 'webhook'
+            source: 'gyanvarsha-webhook'
         });
         return next();
     }
