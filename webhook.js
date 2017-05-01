@@ -22,7 +22,11 @@ server.post('/', (req, res, next) => {
     } = req.body;
 
     if (status === 200 && result.action === 'courseLevel'){
-
+        res.json({
+            displayText: 'Hello world from webhook',
+            source: 'webhook'
+        });
+        return next();
     }
 });
 
