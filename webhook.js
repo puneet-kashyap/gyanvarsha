@@ -16,7 +16,7 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
 console.log(req.body.result.action);
-   if (req.body.status == 200){
+   if (req.body.status = 200){
         res.json({
             speech: "Hello speech from webhook",
             displayText: "Hello from webhook",
