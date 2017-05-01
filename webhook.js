@@ -17,7 +17,6 @@ server.get('/', (req, res, next) => {
 server.post('/', (req, res, next) => {
 
    if (req.body.status === 200 && req.body.result.action === 'courseLevel'){
-        //res.setHeader('content-type', 'application/json');
         res.json({
             speech: "Hello speech from webhook",
             displayText: "Hello from webhook",
@@ -29,8 +28,8 @@ server.post('/', (req, res, next) => {
         console.log('Error == '+res.body);
     } else {
         res.json({
-            speech: "Hello00 speech from webhook",
-            displayText: "Hello00 from webhook",
+            speech: req.body,
+            displayText: req.body,
             data: {},
             contextOut: [{}],
             source: "gyanvarsha-webhook",
