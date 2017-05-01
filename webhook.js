@@ -26,6 +26,11 @@ server.post('/', (req, res, next) => {
             source: "gyanvarsha-webhook",
             followupEvent: {} 
         });
+        console.log('Error == '+res.body);
+    } else {
+        res.json({
+            error: 'Error from webhook post'
+        });
     }
     return next();
 });
