@@ -16,6 +16,9 @@
   ],
   "author": "Puneet Kashyap",
   "license": "ISC",
+  "engines": {
+    "node": "6.9.2"
+  },
   "bugs": {
     "url": "https://github.com/puneet-kashyap/gyanvarsha/issues"
   },
