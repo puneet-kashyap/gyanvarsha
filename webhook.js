@@ -23,7 +23,8 @@ server.post('/', (req, res, next) => {
             displayText: "Hello from webhook",
             data: {},
             contextOut: [{}],
-            source: "gyanvarsha-webhook"    
+            source: "gyanvarsha-webhook",
+            followupEvent: {} 
         });
     }
     return next();
