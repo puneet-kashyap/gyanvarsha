@@ -16,19 +16,16 @@ server.get('/', (req, res, next) => {
 });
 
 server.post('/', (req, res, next) => {
-    let {
-        status,
-        result
-    } = req.body;
 
-    if (status === 200 && result.action === 'courseLevel'){
-        res.json({
-            speech: 'Hello world from webhook',
-            displayText: 'Hello world from webhook',
-            source: 'gyanvarsha-webhook'
+   if (req.body.status === 200 && req.body.action === 'courseLevel'){
+        res.setHeader('content-type', 'application/json');
+        res.send({
+            speech: 'Hello speech from webhook',
+            displayText: 'Hello from webhook',
+            source: 'gyanvarsha-webhook'    
         });
-        return next();
     }
+    return next();
 });
 
 server.listen(PORT, () => console.log(`GyanvarshaBot running on ${PORT}`));
