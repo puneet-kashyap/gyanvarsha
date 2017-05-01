@@ -19,12 +19,12 @@ server.post('/', (req, res, next) => {
 
    if (req.body.status === 200 && req.body.action === 'courseLevel'){
         res.setHeader('content-type', 'application/json');
-        res.send({
+        res.json({
             speech: 'Hello speech from webhook',
             displayText: 'Hello from webhook',
             data: {},
             contextOut: [],
-            
+
             source: 'gyanvarsha-webhook'    
         });
     }
