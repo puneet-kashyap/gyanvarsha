@@ -17,12 +17,12 @@ server.get('/', (req, res, next) => {
 server.post('/', (req, res, next) => {
 
    if (req.body.status === 200 && req.body.result.action === 'courseLevel'){
-        res.setHeader('content-type', 'application/json');
+        //res.setHeader('content-type', 'application/json');
         res.json({
             speech: "Hello speech from webhook",
             displayText: "Hello from webhook",
             data: {},
-            contextOut: [],
+            contextOut: [{}],
             source: "gyanvarsha-webhook"    
         });
     }
