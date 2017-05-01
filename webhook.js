@@ -29,7 +29,12 @@ server.post('/', (req, res, next) => {
         console.log('Error == '+res.body);
     } else {
         res.json({
-            error: 'Error from webhook post'
+            speech: "Hello00 speech from webhook",
+            displayText: "Hello00 from webhook",
+            data: {},
+            contextOut: [{}],
+            source: "gyanvarsha-webhook",
+            followupEvent: {} 
         });
     }
     return next();
