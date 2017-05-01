@@ -22,6 +22,9 @@ server.post('/', (req, res, next) => {
         res.send({
             speech: 'Hello speech from webhook',
             displayText: 'Hello from webhook',
+            data: {},
+            contextOut: [],
+            
             source: 'gyanvarsha-webhook'    
         });
     }
