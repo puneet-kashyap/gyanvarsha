@@ -28,13 +28,14 @@ server.post('/', (req, res, next) => {
         console.log('Error == '+res.body);
     } else {
         res.json({
-            speech: req.body,
-            displayText: req.body,
+            speech: "Hello00 speech from webhook",
+            displayText: "Hello00 from webhook",
             data: {},
             contextOut: [{}],
             source: "gyanvarsha-webhook",
             followupEvent: {} 
         });
+        console.log(req.body);
     }
     return next();
 });
