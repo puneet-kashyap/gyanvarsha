@@ -34,14 +34,16 @@ const education = (currentEducation) => {
         break;
     }
 }
+
+const speechResult = education(result.parameters.EducationLevel);
 console.log('Education' + educationLevel)
 
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
             res.json({
-            speech: education(result.parameters.EducationLevel),
-            displayText: education(result.parameters.EducationLevel),
+            speech: speechResult,
+            displayText: speechResult,
             source: "gyanvarsha-webhook",
             });
             break;
