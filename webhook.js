@@ -16,15 +16,19 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
+    console.log('Result' + result)
 
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
+            switch(result.parameters.Education){
+                case 'PostSecondary':
                 res.json({
-                speech: "Hello speech from webhook",
-                displayText: "Hello from webhook",
+                speech: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
+                displayText: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
                 source: "gyanvarsha-webhook",
                 });
+            }
         default: 
                 res.json({
                 speech: "Oops, something went wrong",
