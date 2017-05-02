@@ -16,12 +16,12 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
-    console.log('Result' + result.parameters);
+    console.log('Result' + result.parameters.EducationLevel);
 
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
-            switch(result.parameters.Education){
+            switch(result.parameters.EducationLevel){
                 case 'PostSecondary':
                 res.json({
                 speech: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
