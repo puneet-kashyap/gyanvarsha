@@ -22,13 +22,10 @@ server.post('/', (req, res, next) => {
     const educationLevel =' ';
 
 const education = (currentEducation) => {
-    if(currentEducation = 'PostSecondary'){
         return educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
-    }
-}
+    };
 
-const speechResult = education(result.parameters.EducationLevel);
-console.log('Speech result' + speechResult)
+console.log('Speech result' + education(result.parameters.EducationLevel));
 
    if (status.code === 200){
        switch(result.action){
