@@ -19,7 +19,7 @@ server.get('/', (req, res, next) => {
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
     console.log('Result' + result.parameters.EducationLevel);
-    const educationLevel;
+    const educationLevel =' ';
 
 const education = (currentEducation) => {
     switch(currentEducation){
