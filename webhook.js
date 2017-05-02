@@ -34,6 +34,7 @@ const education = (currentEducation) => {
         break;
     }
 }
+console.log('Education' + educationLevel)
 
    if (status.code === 200){
        switch(result.action){
