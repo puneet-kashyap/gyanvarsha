@@ -18,20 +18,13 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
-    console.log('Result' + result.parameters.EducationLevel);
-
-const education = (currentEducation) => {
-        return educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
-    };
-
-console.log('Speech result' + education(result.parameters.EducationLevel));
 
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
             res.json({
-            speech: 'speechResult',
-            displayText: 'speechResult',
+            speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+            displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
             source: "gyanvarsha-webhook",
             });
             break;
