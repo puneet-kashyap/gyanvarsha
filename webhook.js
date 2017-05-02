@@ -21,20 +21,11 @@ server.post('/', (req, res, next) => {
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
-            switch(result.parameters.EducationLevel){
-                case 'PostSecondary':
                     res.json({
                     speech: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
                     displayText: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
                     source: "gyanvarsha-webhook",
                     });
-                default:
-                    res.json({
-                    speech: result.parameters.EducationLevel,
-                    displayText: result.parameters.EducationLevel,
-                    source: "gyanvarsha-webhook",
-                    });
-            }
         default: 
                 res.json({
                 speech: "Oops, something went wrong",
