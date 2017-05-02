@@ -21,17 +21,23 @@ server.post('/', (req, res, next) => {
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
-                    res.json({
-                    speech: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
-                    displayText: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
-                    source: "gyanvarsha-webhook",
-                    });
+            res.json({
+            speech: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
+            displayText: "You would be best fit for certificate or diploma courses. Would you like to do Certification or Diploma program ?",
+            source: "gyanvarsha-webhook",
+            });
+        case 'offerCourses':
+            res.json({
+            speech: "That's great",
+            displayText: "That's great",
+            source: "gyanvarsha-webhook",
+            });
         default: 
-                res.json({
-                speech: "Oops, something went wrong",
-                displayText: "Oops, something went wrong",
-                source: "gyanvarsha-webhook",
-                });
+            res.json({
+            speech: "Oops, something went wrong",
+            displayText: "Oops, something went wrong",
+            source: "gyanvarsha-webhook",
+            });
         }
     }
     return next();
