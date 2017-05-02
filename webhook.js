@@ -24,19 +24,19 @@ server.post('/', (req, res, next) => {
 const education = (currentEducation) => {
     switch(currentEducation){
         case 'PostSecondary':
-           educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
+           this.educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
         break;
         case 'Graduate':
-            educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
+            this.educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
         break;
         case 'PostGraduate':
-            educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
+            this.educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
         break;
     }
 }
 
 const speechResult = education(result.parameters.EducationLevel);
-console.log('Education' + educationLevel)
+console.log('Speech result' + speechResult)
 
    if (status.code === 200){
        switch(result.action){
