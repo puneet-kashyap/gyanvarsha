@@ -34,7 +34,7 @@ server.post('/', (req, res, next) => {
                 displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
                 source: "gyanvarsha-webhook",
                 });
-            } else if (result.parameters.EducationLevel == 'Graduate'){
+            } else if (result.parameters.EducationLevel == 'PostGraduate'){
                  res.json({
                 speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
                 displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
