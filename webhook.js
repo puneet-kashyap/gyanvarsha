@@ -18,14 +18,15 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
+    const postSecondaryResponse = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,;
 
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
                 res.json({
-                speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-                displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+                speech: postSecondaryResponse,
+                displayText: postSecondaryResponse,
                 source: "gyanvarsha-webhook",
                 });
             } else if (result.parameters.EducationLevel == 'Graduate'){
