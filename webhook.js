@@ -14,30 +14,47 @@ server.get('/', (req, res, next) => {
   return next();
 });
 
+
+
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
     console.log('Result' + result.parameters.EducationLevel);
+    const educationLevel;
+
+const education = (currentEducation) => {
+    switch(currentEducation){
+        case 'PostSecondary':
+           educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
+        break;
+        case 'Graduate':
+            educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
+        break;
+        case 'PostGraduate':
+            educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
+        break;
+    }
+}
 
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
             res.json({
-            speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-            displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+            speech: education(result.parameters.EducationLevel),
+            displayText: education(result.parameters.EducationLevel),
             source: "gyanvarsha-webhook",
             });
             break;
         case 'offerProgram':
             res.json({
-            speech: `That's great ${result.parameters.ProgramName}`,
-            displayText: `That's great ${result.parameters.ProgramName}`,
+            speech: `That's great. ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`,
+            displayText: `That's great ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`,
             source: "gyanvarsha-webhook",
             });
             break;
         case 'offerCourses':
             res.json({
-            speech: `That's great ${result.parameters.Courses}`,
-            displayText: `That's great ${result.parameters.Courses}`,
+            speech: `Awesome. ${result.parameters.Courses}`,
+            displayText: `Awesome. ${result.parameters.Courses}`,
             source: "gyanvarsha-webhook",
             });
             break;
