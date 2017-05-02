@@ -4,7 +4,7 @@ const server = Restify.createServer({
   name: "GyanvarshaBot"
 });
 const request = require('request');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 server.use(Restify.bodyParser());
 server.use(Restify.jsonp());
@@ -15,19 +15,25 @@ server.get('/', (req, res, next) => {
 });
 
 server.post('/', (req, res, next) => {
-   if (req.body.status = 200 && req.body.result.action == "courseLevel"){
-        res.json({
-            speech: "Hello speech from webhook",
-            displayText: "Hello from webhook",
-            source: "gyanvarsha-webhook",
-        });
-    } else {
-        res.json({
-            speech: "Oops, something went wrong",
-            displayText: "Oops, something went wrong",
-            source: "gyanvarsha-webhook",
-        });
-        
+    let { status, result } = req.body;
+    console.log('Status code ' +status.code);
+    console.log('Result action '+ result.action);
+
+   if (req.body.status = 200){
+       switch(req.body.result.action){
+        case 'courseLevel':
+                res.json({
+                speech: "Hello speech from webhook",
+                displayText: "Hello from webhook",
+                source: "gyanvarsha-webhook",
+                });
+        default: 
+                res.json({
+                speech: "Oops, something went wrong",
+                displayText: "Oops, something went wrong",
+                source: "gyanvarsha-webhook",
+                });
+        }
     }
     return next();
 });
