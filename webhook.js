@@ -22,7 +22,7 @@ server.post('/', (req, res, next) => {
    if (status.code === 200){
        switch(result.action){
         case 'courseLevel':
-            if (result.parameters.EducationLevel){
+            if (result.parameters.EducationLevel == 'PostSecondary'){
             res.json({
             speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
             displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
