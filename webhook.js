@@ -22,16 +22,8 @@ server.post('/', (req, res, next) => {
     const educationLevel =' ';
 
 const education = (currentEducation) => {
-    switch(currentEducation){
-        case 'PostSecondary':
-           this.educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
-        break;
-        case 'Graduate':
-            this.educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
-        break;
-        case 'PostGraduate':
-            this.educationLevel = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
-        break;
+    if(currentEducation = 'PostSecondary'){
+        return educationLevel = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification, Diploma, or Degree program ?`;
     }
 }
 
