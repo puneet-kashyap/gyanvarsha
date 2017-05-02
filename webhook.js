@@ -22,8 +22,8 @@ server.post('/', (req, res, next) => {
        switch(result.action){
         case 'courseLevel':
             res.json({
-            speech: `Certification or Diploma courses are best for ${result.parameters.ProgramName}. Would you like to do Certification or Diploma program ?`,
-            displayText: `Certification or Diploma courses are best for ${result.parameters.ProgramName}. Would you like to do Certification or Diploma program ?`,
+            speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+            displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
             source: "gyanvarsha-webhook",
             });
             break;
