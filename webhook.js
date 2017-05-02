@@ -27,10 +27,17 @@ server.post('/', (req, res, next) => {
             source: "gyanvarsha-webhook",
             });
             break;
-        case 'offerCourses':
+        case 'offerProgram':
             res.json({
             speech: `That's great ${result.parameters.ProgramName}`,
             displayText: `That's great ${result.parameters.ProgramName}`,
+            source: "gyanvarsha-webhook",
+            });
+            break;
+        case 'offerCourses':
+            res.json({
+            speech: `That's great ${result.parameters.Courses}`,
+            displayText: `That's great ${result.parameters.Courses}`,
             source: "gyanvarsha-webhook",
             });
             break;
