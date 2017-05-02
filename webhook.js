@@ -16,7 +16,8 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
-    console.log('Result' + result)
+    console.log('Result' + result.action);
+    console.log('Request' + req.body);
 
    if (status.code === 200){
        switch(result.action){
