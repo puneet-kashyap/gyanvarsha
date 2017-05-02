@@ -28,8 +28,8 @@ server.post('/', (req, res, next) => {
             });
         case 'offerCourses':
             res.json({
-            speech: "That's great",
-            displayText: "That's great",
+            speech: `That's great ${result.parameters.ProgramName}`,
+            displayText: `That's great ${result.parameters.ProgramName}`,
             source: "gyanvarsha-webhook",
             });
         default: 
