@@ -16,11 +16,9 @@ server.get('/', (req, res, next) => {
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
-    console.log('Status code ' +status.code);
-    console.log('Result action '+ result.action);
 
-   if (req.body.status = 200){
-       switch(req.body.result.action){
+   if (status.code === 200){
+       switch(result.action){
         case 'courseLevel':
                 res.json({
                 speech: "Hello speech from webhook",
