@@ -23,11 +23,23 @@ server.post('/', (req, res, next) => {
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
+                res.json({
+                speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+                displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+                source: "gyanvarsha-webhook",
+                });
+            } else if (result.parameters.EducationLevel == 'Graduate'){
             res.json({
-            speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-            displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-            source: "gyanvarsha-webhook",
-            });
+                speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
+                displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
+                source: "gyanvarsha-webhook",
+                });
+            } else if (result.parameters.EducationLevel == 'Graduate'){
+                 res.json({
+                speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
+                displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
+                source: "gyanvarsha-webhook",
+                });
             }
             break;
         case 'offerProgram':
