@@ -30,25 +30,13 @@ server.post('/', (req, res, next) => {
             }
             break;
         case 'offerProgram':
-            res.json({
-            speech: `That's great. ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`,
-            displayText: `That's great ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`,
-            source: "gyanvarsha-webhook",
-            });
+            responseText = `That's great. ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
             break;
         case 'offerCourses':
-            res.json({
-            speech: `Awesome. ${result.parameters.Courses}`,
-            displayText: `Awesome. ${result.parameters.Courses}`,
-            source: "gyanvarsha-webhook",
-            });
+            responseText = `Awesome. ${result.parameters.Courses}`;
             break;
         default: 
-            res.json({
-            speech: "Oops, something went wrong",
-            displayText: "Oops, something went wrong",
-            source: "gyanvarsha-webhook",
-            });
+            responseText = "Oops, something went wrong";
         }
             res.json({
             speech: responseText,
