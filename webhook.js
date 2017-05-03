@@ -18,27 +18,15 @@ server.post('/', (req, res, next) => {
     let { status, result } = req.body;
 
    if (status.code === 200){
-       let responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`;
+       let responseText = '';
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
-                res.json({
-                speech: responseText,
-                displayText: responseText,
-                source: "gyanvarsha-webhook",
-                });
+                responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`;
             } else if (result.parameters.EducationLevel == 'Graduate'){
-            res.json({
-                speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                source: "gyanvarsha-webhook",
-                });
+                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
             } else if (result.parameters.EducationLevel == 'PostGraduate'){
-                 res.json({
-                speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                source: "gyanvarsha-webhook",
-                });
+                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
             }
             break;
         case 'offerProgram':
@@ -62,6 +50,11 @@ server.post('/', (req, res, next) => {
             source: "gyanvarsha-webhook",
             });
         }
+            res.json({
+            speech: responseText,
+            displayText: responseText,
+            source: "gyanvarsha-webhook",
+            });
     }
     return next();
 });
