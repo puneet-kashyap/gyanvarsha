@@ -14,16 +14,14 @@ server.get('/', (req, res, next) => {
   return next();
 });
 
-
-
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
 
    if (status.code === 200){
+       let responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`;
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
-                let responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`;
                 res.json({
                 speech: responseText,
                 displayText: responseText,
