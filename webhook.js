@@ -23,9 +23,10 @@ server.post('/', (req, res, next) => {
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
+                let responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`;
                 res.json({
-                speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-                displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
+                speech: responseText,
+                displayText: responseText,
                 source: "gyanvarsha-webhook",
                 });
             } else if (result.parameters.EducationLevel == 'Graduate'){
