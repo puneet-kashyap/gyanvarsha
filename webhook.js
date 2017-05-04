@@ -22,15 +22,15 @@ server.post('/', (req, res, next) => {
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
-                responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`;
+                responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel} students. Would you like to do Certification or Diploma program ?`;
             } else if (result.parameters.EducationLevel == 'Graduate'){
-                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
+                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Post graduate program ?`;
             } else if (result.parameters.EducationLevel == 'PostGraduate'){
-                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`;
+                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Post graduate program ?`;
             }
             break;
         case 'offerProgram':
-            responseText = `That's great. ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
+            responseText = `That's great. ${result.parameters.EducationLevel} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
             break;
         case 'offerCourses':
             responseText = `Awesome. ${result.parameters.Courses}`;
