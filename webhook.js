@@ -22,13 +22,15 @@ server.post('/', (req, res, next) => {
        switch(result.action){
         case 'courseLevel':
             if (result.parameters.EducationLevel == 'PostSecondary'){
-                responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel} students. Would you like to do Certification or Diploma program ?`;
+                responseText = `Certification or Diploma courses are best for ${result.parameters.EducationLevel} students. Would you like to do Certification, Diploma, or Degree program ?`;
             } else if (result.parameters.EducationLevel == 'Graduate'){
-                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Post graduate program ?`;
+                responseText = `Bachelor's or Master's degree courses are best for ${result.parameters.EducationLevel} students. Would you like to do Bachelor's or Master's degree ?`;
             } else if (result.parameters.EducationLevel == 'PostGraduate'){
-                responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Post graduate program ?`;
+                responseText = `Master's degree or specialized Certification are best for ${result.parameters.EducationLevel} students. Would you like to do Master's or certification ?`;
             } else if (result.parameters.EducationLevel == 'Diploma'){
-                responseText = `Degree or Certification courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Certification program ?`;
+                responseText = `Bachelor's Degree or Certification courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Certification program ?`;
+            } else {
+                responseText = `Diploma or Certification courses are very popular. Would you like to do Diploma or Certification program ?`;
             }
             break;
         case 'offerProgram':
