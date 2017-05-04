@@ -27,13 +27,15 @@ server.post('/', (req, res, next) => {
                 responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Post graduate program ?`;
             } else if (result.parameters.EducationLevel == 'PostGraduate'){
                 responseText = `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Post graduate program ?`;
+            } else if (result.parameters.EducationLevel == 'Diploma'){
+                responseText = `Degree or Certification courses are best for ${result.parameters.EducationLevel} students. Would you like to do Degree or Certification program ?`;
             }
             break;
         case 'offerProgram':
             responseText = `That's great. ${result.parameters.EducationLevel} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
             break;
         case 'offerCourses':
-            responseText = `Awesome. ${result.parameters.Courses}`;
+            responseText = `Awesome. ${result.parameters.Courses} has a good scope. Please contact Anil from Gyanvarsha at Phone # +91 9210214031.`;
             break;
         default: 
             responseText = "Oops, something went wrong";
