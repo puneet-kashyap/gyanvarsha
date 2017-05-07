@@ -11,6 +11,6 @@ rl.setPrompt('> ');
 rl.prompt();
 
 rl.on('line', reply => {
-	console.log(`You said ${reply}`);
+	console.log(`You said ${reply}.\nThank you.`);
 	rl.prompt();
 })
