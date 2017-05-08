@@ -3,6 +3,9 @@ const Restify = require('restify');
 const server = Restify.createServer({
   name: "GyanvarshaBot"
 });
+const actions = require('./actions');
+const database = require('./database');
+
 const request = require('request');
 const PORT = process.env.PORT || 3001;
 
@@ -14,55 +17,40 @@ server.get('/', (req, res, next) => {
   return next();
 });
 
-
+console.log(actions.currentEducation('Graduate'));
+database.initiatelDB();
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
-
    if (status.code === 200){
+       let responseText = '';
        switch(result.action){
         case 'courseLevel':
-            if (result.parameters.EducationLevel == 'PostSecondary'){
-                res.json({
-                speech: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-                displayText: `Certification or Diploma courses are best for ${result.parameters.EducationLevel}. Would you like to do Certification or Diploma program ?`,
-                source: "gyanvarsha-webhook",
-                });
-            } else if (result.parameters.EducationLevel == 'Graduate'){
+            responseText = actions.currentEducation(result.parameters.EducationLevel);
             res.json({
-                speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                source: "gyanvarsha-webhook",
-                });
-            } else if (result.parameters.EducationLevel == 'PostGraduate'){
-                 res.json({
-                speech: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                displayText: `Degree or PostGraduate courses are best for ${result.parameters.EducationLevel}. Would you like to do Degree or Post graduate program ?`,
-                source: "gyanvarsha-webhook",
-                });
-            }
+            speech: responseText,
+            displayText: responseText,
+            source: "gyanvarsha-webhook",
+            });
             break;
         case 'offerProgram':
-            res.json({
-            speech: `That's great. ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`,
-            displayText: `That's great ${result.parameters.ProgramName} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`,
-            source: "gyanvarsha-webhook",
-            });
+            responseText = `That's great. ${result.parameters.EducationLevel} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
             break;
         case 'offerCourses':
-            res.json({
-            speech: `Awesome. ${result.parameters.Courses}`,
-            displayText: `Awesome. ${result.parameters.Courses}`,
-            source: "gyanvarsha-webhook",
-            });
+            responseText = `Awesome. ${result.parameters.Courses} has a good scope. Please contact Anil from Gyanvarsha at Phone # +91 9210214031 for further assistance.`;
+            break;
+        case 'distanceLearning':
+            responseText = `Awesome. ${result.parameters.Courses} has a good scope. Please contact Anil from Gyanvarsha at Phone # +91 9210214031 for further assistance.`;
             break;
         default: 
-            res.json({
-            speech: "Oops, something went wrong",
-            displayText: "Oops, something went wrong",
-            source: "gyanvarsha-webhook",
-            });
+            responseText = "Oops, something went wrong";
         }
+            res.json({
+            speech: responseText,
+            displayText: responseText,
+            source: "gyanvarsha-webhook",
+            followupEvent: {name: 'WELCOME',}
+            });
     }
     return next();
 });

@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/puneet-kashyap/gyanvarsha#readme",
   "dependencies": {
+    "mongodb": "^2.2.26",
     "request": "^2.81.0",
     "restify": "^4.3.0"
   }
