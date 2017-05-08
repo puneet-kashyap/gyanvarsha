@@ -55,6 +55,7 @@ server.post('/', (req, res, next) => {
        let responseText = '';
        switch(result.action){
         case 'courseLevel':
+            console.log('>>> ' +currentEducation(result.parameters.EducationLevel));
             responseText = currentEducation(result.parameters.EducationLevel);
             break;
         case 'offerProgram':
