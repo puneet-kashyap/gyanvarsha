@@ -3,24 +3,8 @@ const Restify = require('restify');
 const server = Restify.createServer({
   name: "GyanvarshaBot"
 });
-
-var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
-
-// Connection URL
-var url = 'mongodb://chatbot:chatbot@ds133331.mlab.com:33331/gyanvarsha';
-
-// Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  var cursor = db.collection('users_info').find( );
-  cursor.each(function(err,doc){
-      console.log(doc);
-  })
-  console.log("Connected successfully to MongoDb server");
-
-  db.close();
-});
+const actions = require('./actions');
+const database = require('./database');
 
 const request = require('request');
 const PORT = process.env.PORT || 3001;
@@ -33,21 +17,8 @@ server.get('/', (req, res, next) => {
   return next();
 });
 
-const currentEducation = (edu) => {
-    let responseCurrentEducation='';
-    if (edu == 'PostSecondary'){
-        responseCurrentEducation = `Degree or Diploma courses are best for ${edu} students.\nWould you like to do Certification, Diploma, or Degree program ?`;
-    } else if (edu == 'Graduate'){
-        responseCurrentEducation = `Master's degree courses are best for ${edu} students.\nWould you like to do Bachelor's or Master's degree ?`;
-    } else if (edu == 'PostGraduate'){
-        responseCurrentEducation = `Master's degree or specialized Certification are best for ${edu} students.\nWould you like to do Master's or certification ?`;
-    } else if (edu == 'Diploma'){
-        responseCurrentEducation = `Bachelor's Degree or Certification courses are best for ${edu} students.\nWould you like to do Degree or Certification program ?`;
-    } else {
-        responseCurrentEducation = `Certification courses are very popular.\nWould you like to do Diploma or Certification program ?`;
-    }
-    return responseCurrentEducation;
-}
+console.log(actions.currentEducation('Graduate'));
+database.initiatelDB();
 
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
