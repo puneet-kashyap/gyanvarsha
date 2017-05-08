@@ -27,6 +27,11 @@ server.post('/', (req, res, next) => {
        switch(result.action){
         case 'courseLevel':
             responseText = actions.currentEducation(result.parameters.EducationLevel);
+            res.json({
+            speech: responseText,
+            displayText: responseText,
+            source: "gyanvarsha-webhook",
+            });
             break;
         case 'offerProgram':
             responseText = `That's great. ${result.parameters.EducationLevel} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
@@ -44,7 +49,7 @@ server.post('/', (req, res, next) => {
             speech: responseText,
             displayText: responseText,
             source: "gyanvarsha-webhook",
-            followupEvent: {name: 'WELCOME'}
+            followupEvent: {name: 'WELCOME',}
             });
     }
     return next();
