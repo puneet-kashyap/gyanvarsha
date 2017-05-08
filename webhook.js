@@ -57,7 +57,8 @@ server.post('/', (req, res, next) => {
         case 'courseLevel':
             console.log('>>> ' +currentEducation(result.parameters.EducationLevel));
             if (result.parameters.EducationLevel == 'PostSecondary'){
-                responseText = `Degree or Diploma courses are best for ${result.parameters.EducationLevel} students. Would you like to do Certification, Diploma, or Degree program ?`;
+                responseText = currentEducation(result.parameters.EducationLevel);
+                //responseText = `Degree or Diploma courses are best for ${result.parameters.EducationLevel} students. Would you like to do Certification, Diploma, or Degree program ?`;
             } else if (result.parameters.EducationLevel == 'Graduate'){
                 responseText = `Master's degree courses are best for ${result.parameters.EducationLevel} students. Would you like to do Bachelor's or Master's degree ?`;
             } else if (result.parameters.EducationLevel == 'PostGraduate'){
