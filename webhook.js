@@ -34,6 +34,9 @@ server.post('/', (req, res, next) => {
         case 'offerCourses':
             responseText = `Awesome. ${result.parameters.Courses} has a good scope. Please contact Anil from Gyanvarsha at Phone # +91 9210214031 for further assistance.`;
             break;
+        case 'distanceLearning':
+            responseText = `Awesome. ${result.parameters.Courses} has a good scope. Please contact Anil from Gyanvarsha at Phone # +91 9210214031 for further assistance.`;
+            break;
         default: 
             responseText = "Oops, something went wrong";
         }
@@ -41,6 +44,7 @@ server.post('/', (req, res, next) => {
             speech: responseText,
             displayText: responseText,
             source: "gyanvarsha-webhook",
+            followupEvent: {name: 'WELCOME'}
             });
     }
     return next();
