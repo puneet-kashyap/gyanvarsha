@@ -32,30 +32,30 @@ server.get('/', (req, res, next) => {
   res.send('Hello World');
   return next();
 });
-/*
+
 const currentEducation = (edu) => {
+    let responseCurrentEducation='';
     if (edu == 'PostSecondary'){
-        responseText = `Degree or Diploma courses are best for ${edu} students. Would you like to do Certification, Diploma, or Degree program ?`;
+        responseCurrentEducation = `Degree or Diploma courses are best for ${edu} students. Would you like to do Certification, Diploma, or Degree program ?`;
     } else if (edu == 'Graduate'){
-        responseText = `Master's degree courses are best for ${edu} students. Would you like to do Bachelor's or Master's degree ?`;
+        responseCurrentEducation = `Master's degree courses are best for ${edu} students. \nWould you like to do Bachelor's or Master's degree ?`;
     } else if (edu == 'PostGraduate'){
-        responseText = `Master's degree or specialized Certification are best for ${edu} students. Would you like to do Master's or certification ?`;
+        responseCurrentEducation = `Master's degree or specialized Certification are best for ${edu} students. Would you like to do Master's or certification ?`;
     } else if (edu == 'Diploma'){
-        responseText = `Bachelor's Degree or Certification courses are best for ${edu} students. Would you like to do Degree or Certification program ?`;
+        responseCurrentEducation = `Bachelor's Degree or Certification courses are best for ${edu} students. Would you like to do Degree or Certification program ?`;
     } else {
-        responseText = `Certification courses are very popular. Would you like to do Diploma or Certification program ?`;
+        responseCurrentEducation = `Certification courses are very popular. Would you like to do Diploma or Certification program ?`;
     }
-    return responseText;
+    return responseCurrentEducation;
 }
-*/
+
 server.post('/', (req, res, next) => {
     let { status, result } = req.body;
-    console.log(req.body);
    if (status.code === 200){
        let responseText = '';
        switch(result.action){
         case 'courseLevel':
-            //console.log('>>> ' +currentEducation(result.parameters.EducationLevel));
+            console.log('>>> ' +currentEducation(result.parameters.EducationLevel));
             if (result.parameters.EducationLevel == 'PostSecondary'){
                 responseText = `Degree or Diploma courses are best for ${result.parameters.EducationLevel} students. Would you like to do Certification, Diploma, or Degree program ?`;
             } else if (result.parameters.EducationLevel == 'Graduate'){
