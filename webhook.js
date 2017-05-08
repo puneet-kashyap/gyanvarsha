@@ -26,7 +26,7 @@ server.post('/', (req, res, next) => {
        let responseText = '';
        switch(result.action){
         case 'courseLevel':
-            responseText = currentEducation(result.parameters.EducationLevel);
+            responseText = actions.currentEducation(result.parameters.EducationLevel);
             break;
         case 'offerProgram':
             responseText = `That's great. ${result.parameters.EducationLevel} is a very good choice. In which field are you interested in? e.g. Accounting, Management, Engineering, MBA etc.`;
